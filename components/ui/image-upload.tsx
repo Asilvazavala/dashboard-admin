@@ -8,10 +8,10 @@ import { CldUploadWidget } from 'next-cloudinary';
 import { Button } from "@/components/ui/button";
 
 interface ImageUploadProps {
+  value: string[];
   disabled?: boolean;
   onChange: (value: string) => void;
   onRemove: (value: string) => void;
-  value: string[];
 }
 
 const ImageUpload: React.FC<ImageUploadProps> = ({
@@ -63,7 +63,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
       </div>
       <CldUploadWidget 
         onUpload={onUpload} 
-        uploadPreset="t29yv9vv"
+        uploadPreset="appk5zuq"
       >
         {({ open }) => {
           const onClick = () => {
