@@ -15,11 +15,11 @@ import {
 import { Button } from "@/components/ui/button";
 import { AlertModal } from '@/components/modals/alert-modal';
 
-import { CategoryColumn } from "./columns";
+import { SizeColumn } from "./columns";
 import { useState } from "react";
 
 interface CellActionProps {
-  data: CategoryColumn
+  data: SizeColumn
 }
 
 const CellAction: React.FC<CellActionProps> = ({
@@ -33,19 +33,19 @@ const CellAction: React.FC<CellActionProps> = ({
 
   const onCopy = (id: string) => {
     navigator.clipboard.writeText(id);
-    toast.success("Id de categoría copiada al portapapeles 😄");
+    toast.success("Id de tamaño copiado al portapapeles 😄");
   }
 
   const onDelete = async () => {
     try {
       setLoading(true)
-      await axios.delete(`/api/${params.storeId}/categories/${data.id}`)
+      await axios.delete(`/api/${params.storeId}/sizes/${data.id}`)
       router.refresh();
-      toast.success("Categpría eliminada 😄");
+      toast.success("Tamaño eliminado 😄");
 
     } catch (error) {
       console.log(error);
-      toast.error("Debes remover todas los productos primero de esta categoría 😓")
+      toast.error("Debes remover todos los productos primero de este tamaño 😓")
     } finally {
       setLoading(false)
       setOpen(false)
@@ -84,7 +84,7 @@ const CellAction: React.FC<CellActionProps> = ({
 
           <DropdownMenuItem 
             className="cursor-pointer" 
-            onClick={() => router.push(`/${params.storeId}/categories/${data.id}`)}
+            onClick={() => router.push(`/${params.storeId}/sizes/${data.id}`)}
           >
             <Edit className="mr-2 h-4 w-4" />
             Actualizar

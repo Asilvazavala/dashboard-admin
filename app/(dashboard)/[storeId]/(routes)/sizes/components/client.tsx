@@ -6,15 +6,15 @@ import { useParams, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import { Separator } from "@/components/ui/separator";
-import { CategoryColumn, columns } from "./columns";
+import { SizeColumn, columns } from "./columns";
 import { DataTable } from "@/components/ui/data-table";
 import { ApiList } from "@/components/ui/api-list";
 
-interface CategoryClientProps {
-  data: CategoryColumn[]
+interface SizeClientProps {
+  data: SizeColumn[]
 }
 
-export const CategoryClient: React.FC<CategoryClientProps> = ({
+export const SizeClient: React.FC<SizeClientProps> = ({
   data
 }) => {
   const router = useRouter();
@@ -24,10 +24,10 @@ export const CategoryClient: React.FC<CategoryClientProps> = ({
     <>
       <section className="flex items-center justify-between">
         <Heading 
-          title={`Categorías (${data.length})`}
-          description="Administra las categorías de tu tienda"
+          title={`Tamaños (${data.length})`}
+          description="Administra los tamaños de tu tienda"
         />
-        <Button onClick={() => router.push(`/${params.storeId}/categories/new`)}>
+        <Button onClick={() => router.push(`/${params.storeId}/sizes/new`)}>
           <Plus className="mr-2 h-4 w-4" />
           Agregar nuevo
         </Button>
@@ -36,16 +36,16 @@ export const CategoryClient: React.FC<CategoryClientProps> = ({
       <DataTable 
         columns={columns} 
         data={data} 
-        searchKey="label"
+        searchKey="name"
       />
       <Heading 
         title="API"
-        description="Llamdas de Api para categorías"
+        description="Llamdas de Api para tamaños"
       />
       <Separator />
       <ApiList 
-        entityName="categories"
-        entityIdName="categoryId"
+        entityName="sizes"
+        entityIdName="sizeId"
       />
     </>
   )
