@@ -6,8 +6,16 @@ import { useParams, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import { Separator } from "@/components/ui/separator";
+import { BillboardColumn, columns } from "./columns";
+import { DataTable } from "@/components/ui/data-table";
 
-export const BillBoardClient = () => {
+interface BillBoardClientProps {
+  data: BillboardColumn[]
+}
+
+export const BillBoardClient: React.FC<BillBoardClientProps> = ({
+  data
+}) => {
   const router = useRouter();
   const params = useParams();
 
@@ -15,7 +23,7 @@ export const BillBoardClient = () => {
     <>
       <section className="flex items-center justify-between">
         <Heading 
-          title="Cartelera {0}"
+          title={`Productos (${data.length})`}
           description="Administra la cartelera de tu tienda"
         />
         <Button onClick={() => router.push(`/${params.storeId}/billboards/new`)}>
@@ -24,6 +32,11 @@ export const BillBoardClient = () => {
         </Button>
       </section>
       <Separator />
+      <DataTable 
+        columns={columns} 
+        data={data} 
+        searchKey="label"
+      />
     </>
   )
 }

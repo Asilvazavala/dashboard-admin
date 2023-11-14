@@ -45,10 +45,10 @@ const BillboardForm: React.FC<BillboardFormProps> = ({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? "Editar cartelera" : "Crear cartelera";
-  const description = initialData ? "Editar una cartelera" : "Crear una cartelera";
-  const toastMessage = initialData ? "Cartelera actualizada" : "Cartelera creada";
-  const action = initialData ? "Guardar cambios" : "Crear cartelera";
+  const title = initialData ? "Editar producto" : "Crear producto";
+  const description = initialData ? "Editar un producto" : "Crear un producto";
+  const toastMessage = initialData ? "Producto actualizado" : "Producto creado";
+  const action = initialData ? "Guardar cambios" : "Crear producto";
 
   const form = useForm<BillboardFormValues>({
     resolver: zodResolver(formSchema),
@@ -68,6 +68,7 @@ const BillboardForm: React.FC<BillboardFormProps> = ({
       }
 
       router.refresh();
+      router.push(`/${params.storeId}/billboards`);
       toast.success(toastMessage);
 
     } catch (error) {
@@ -150,11 +151,11 @@ const BillboardForm: React.FC<BillboardFormProps> = ({
               name='label'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Etiqueta</FormLabel>
+                  <FormLabel>Producto</FormLabel>
                   <FormControl>
                     <Input 
                       disabled={loading} 
-                      placeholder='Etiqueta de la cartelera'
+                      placeholder='Etiqueta del producto'
                       {...field}
                     />
                   </FormControl>
