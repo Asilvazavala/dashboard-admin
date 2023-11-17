@@ -6,15 +6,15 @@ import { useParams, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import { Separator } from "@/components/ui/separator";
-import { BillboardColumn, columns } from "./columns";
+import { ProductColumn, columns } from "./columns";
 import { DataTable } from "@/components/ui/data-table";
 import { ApiList } from "@/components/ui/api-list";
 
-interface BillBoardClientProps {
-  data: BillboardColumn[]
+interface ProductdClientProps {
+  data: ProductColumn[]
 }
 
-export const BillBoardClient: React.FC<BillBoardClientProps> = ({
+export const ProductClient: React.FC<ProductdClientProps> = ({
   data
 }) => {
   const router = useRouter();
@@ -24,10 +24,10 @@ export const BillBoardClient: React.FC<BillBoardClientProps> = ({
     <>
       <section className="flex items-center justify-between">
         <Heading 
-          title={`Carteleras (${data.length})`}
-          description="Administra la cartelera de tu tienda"
+          title={`Productos (${data.length})`}
+          description="Administra los productos de tu tienda"
         />
-        <Button onClick={() => router.push(`/${params.storeId}/billboards/new`)}>
+        <Button onClick={() => router.push(`/${params.storeId}/products/new`)}>
           <Plus className="mr-2 h-4 w-4" />
           Agregar nuevo
         </Button>
@@ -36,16 +36,16 @@ export const BillBoardClient: React.FC<BillBoardClientProps> = ({
       <DataTable 
         columns={columns} 
         data={data} 
-        searchKey="label"
+        searchKey="name"
       />
       <Heading 
         title="API"
-        description="Llamadas de Api para carteleras"
+        description="Llamadas de Api para productos"
       />
       <Separator />
       <ApiList 
-        entityName="billboards"
-        entityIdName="billboardId"
+        entityName="products"
+        entityIdName="productId"
       />
     </>
   )

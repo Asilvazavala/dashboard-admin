@@ -19,7 +19,7 @@ export function MainNav({
     },
     {
       href: `/${params.storeId}/billboards`,
-      label: 'Productos',
+      label: 'Carteleras',
       active: pathname === `/${params.storeId}/billboard`,
     },
     {
@@ -31,6 +31,16 @@ export function MainNav({
       href: `/${params.storeId}/sizes`,
       label: 'Tamaños',
       active: pathname === `/${params.storeId}/sizes`,
+    },
+    {
+      href: `/${params.storeId}/products`,
+      label: 'Productos',
+      active: pathname === `/${params.storeId}/products`,
+    },
+    {
+      href: `/${params.storeId}/orders`,
+      label: 'Órdenes',
+      active: pathname === `/${params.storeId}/orders`,
     },
     {
       href: `/${params.storeId}/settings`,

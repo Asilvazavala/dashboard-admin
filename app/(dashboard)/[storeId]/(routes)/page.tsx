@@ -14,9 +14,9 @@ const DahsboardPage: React.FC<DashboardPageProps> = async ({
   });
 
   return (
-    <section>
-      Active Store: {store?.name}
-    </section>
+    <div className='px-4 py-2'>
+      Tienda activa: {store?.name}
+    </div>
   )
 };
 

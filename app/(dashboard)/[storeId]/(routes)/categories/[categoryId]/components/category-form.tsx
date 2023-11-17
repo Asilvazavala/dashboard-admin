@@ -157,7 +157,7 @@ const CategoryForm: React.FC<CategoryFormProps> = ({
               name='billboardId'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Producto</FormLabel>
+                  <FormLabel>Cartelera</FormLabel>
                   <Select 
                     disabled={loading}
                     onValueChange={field.onChange}
@@ -168,10 +168,8 @@ const CategoryForm: React.FC<CategoryFormProps> = ({
                       <SelectTrigger>
                         <SelectValue
                           defaultValue={field.value}
-                          placeholder='Seleccionar un producto'
-                        >
-
-                        </SelectValue>
+                          placeholder='Seleccionar una cartelera'
+                        />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>

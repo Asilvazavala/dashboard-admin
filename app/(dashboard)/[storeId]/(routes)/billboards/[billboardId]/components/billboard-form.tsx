@@ -45,10 +45,10 @@ const BillboardForm: React.FC<BillboardFormProps> = ({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? "Editar producto" : "Crear producto";
-  const description = initialData ? "Editar un producto" : "Crear un producto";
-  const toastMessage = initialData ? "Producto actualizado" : "Producto creado";
-  const action = initialData ? "Guardar cambios" : "Crear producto";
+  const title = initialData ? "Editar cartelera" : "Crear cartelera";
+  const description = initialData ? "Editar una cartelera" : "Crear una cartelera";
+  const toastMessage = initialData ? "Cartelera actualizado" : "Cartelera creado";
+  const action = initialData ? "Guardar cambios" : "Crear cartelera";
 
   const form = useForm<BillboardFormValues>({
     resolver: zodResolver(formSchema),
@@ -85,11 +85,11 @@ const BillboardForm: React.FC<BillboardFormProps> = ({
       await axios.delete(`/api/${params.storeId}/billboards/${params.billboardId}`)
       router.refresh();
       router.push(`/${params.storeId}/billboards`);
-      toast.success("Producto eliminada 😄");
+      toast.success("Cartelera eliminada 😄");
 
     } catch (error) {
       console.log(error);
-      toast.error("Debes remover todas las categorías primero de este producto 😓")
+      toast.error("Debes remover todas las categorías primero de esta cartelera 😓")
     } finally {
       setLoading(false)
       setOpen(false)
@@ -151,11 +151,11 @@ const BillboardForm: React.FC<BillboardFormProps> = ({
               name='label'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Producto</FormLabel>
+                  <FormLabel>Cartelera</FormLabel>
                   <FormControl>
                     <Input 
                       disabled={loading} 
-                      placeholder='Etiqueta del producto'
+                      placeholder='Etiqueta de la cartelera'
                       {...field}
                     />
                   </FormControl>
