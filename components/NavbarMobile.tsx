@@ -1,6 +1,7 @@
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
 import { Routes } from "./MainNav";
+import { useEffect } from "react";
 interface NavbarMobileProps {
   routes: Routes;
 }
@@ -9,6 +10,24 @@ export const NavbarMobile: React.FC<NavbarMobileProps> = ({
   routes
 }) => {  
   const location = window.location.pathname;
+
+  useEffect(() => {
+    const body = document.body;
+    const handleMenuToggle = () => {
+      body.style.overflow = body.style.overflow === 'hidden' ? 'auto' : 'hidden';
+    };
+
+    const menuCheckbox = document.getElementById('menuMobile');
+    if (menuCheckbox) {
+      menuCheckbox.addEventListener('change', handleMenuToggle);
+    }
+    return () => {
+      if (menuCheckbox) {
+        menuCheckbox.removeEventListener('change', handleMenuToggle);
+      }
+    };
+  }, []);
+  
 
   return (
     <nav className="lg:hidden ml-8 h-screen">
@@ -21,7 +40,7 @@ export const NavbarMobile: React.FC<NavbarMobileProps> = ({
         
         <ul className='z-40 translate-x-[-150%] w-full absolute right-0 top-0 transition duration-700 
         pt-20 flex flex-col gap-y-8 bg-gradient-to-r from-slate-400 to-slate-600 dark:from-slate-800 dark:to-slate-950 
-        peer-checked:translate-x-0 overflow-auto h-screen'>
+        peer-checked:translate-x-0'>
           {routes.map(item => (
             <li key={item.label} className="flex justify-between w-full text-3xl py-2
             border-gray-300 border-b px-8">
