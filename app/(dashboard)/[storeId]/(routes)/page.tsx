@@ -30,7 +30,7 @@ const DahsboardPage: React.FC<DashboardPageProps> = async ({
           description='Descripción general de tu tienda'
         />
         <Separator />
-        <main className='grid gap-4 grid-cols-3'>
+        <main className='grid gap-4 grid-cols-1 md:grid-cols-3'>
           <Card>
             <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
               <CardTitle className='text-sm font-medium'>

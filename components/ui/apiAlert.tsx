@@ -42,8 +42,10 @@ export const ApiAlert: React.FC<ApiAlertProps> = ({
           {textMap[variant]}
         </Badge>
       </AlertTitle>
-      <AlertDescription className="mt-4 flex items-center justify-between">
-        <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+      <AlertDescription className="mt-4 flex md:flex-row flex-col gap-y-4 items-center
+       justify-between overflow-hidden">
+        <code className="relative rounded bg-muted md:px-[0.3rem] py-[0.2rem] font-mono 
+        text-sm font-semibold px-4 ">
           {description}
         </code>
         <Button

@@ -22,7 +22,7 @@ export const BillBoardClient: React.FC<BillBoardClientProps> = ({
 
   return (
     <>
-      <section className="flex items-center justify-between">
+      <section className="flex flex-col gap-y-4 md:flex-row items-center justify-between">
         <Heading 
           title={`Carteleras (${data.length})`}
           description="Administra la cartelera de tu tienda"

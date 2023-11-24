@@ -3,13 +3,14 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
+import { useState } from 'react';
+import { MenuIcon, X } from 'lucide-react';
 
-export function MainNav({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLElement>) {
+export function MainNav() {
   const pathname = usePathname();
   const params = useParams();
+
+  const [openNavbarMobile, setOpenNavbarMobile] = useState(false);
 
   const routes = [
     {
@@ -50,21 +51,34 @@ export function MainNav({
   ];
 
   return (
-    <nav
-      className={cn("flex items-center space-x-4 lg:space-x-6", className)}  
-    >
-      {routes.map((route) => (
-        <Link
-          key={route.href}
-          href={route.href}
-          className={cn(
-            "text-sm font-medium transition-colors hover:text-primary",
-            route.active ? "text-black dark:text-white" : "text-muted-foreground"
-          )}
-        >
-          {route.label}
-        </Link>
-      ))}
-    </nav>
+    <div>
+      <article onClick={() => setOpenNavbarMobile(!openNavbarMobile)}>
+        {openNavbarMobile
+          ? <X className="lg:hidden block h-9 w-9"  />
+          : <MenuIcon className="lg:hidden block h-9 w-9" />
+        }
+      </article>
+
+      <nav
+        className={`items-center space-x-4 mx-4 lg:mx-6 order-last lg:space-x-6 lg:flex lg:flex-row
+        ${openNavbarMobile 
+          ? 'flex flex-col dark:bg-blueDark bg-gray-100 gap-y-8 z-50 h-screen w-full absolute left-0 top-16' 
+          : 'hidden'} `}  
+      >
+        {routes.map((route) => (
+          <Link
+            key={route.href}
+            onClick={() => setOpenNavbarMobile(!openNavbarMobile)}
+            href={route.href}
+            className={cn(
+              "lg:text-sm text-2xl font-medium transition-colors hover:text-primary",
+              route.active ? "text-black dark:text-white" : "text-muted-foreground"
+            )}
+          >
+            {route.label}
+          </Link>
+        ))}
+      </nav>
+    </div>
   )
 };

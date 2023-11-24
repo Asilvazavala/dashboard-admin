@@ -91,7 +91,7 @@ const SettingsForm: React.FC<SettingsFormProps> = ({
         onConfirm={onDelete}
         loading={loading}
       />
-      <section className="flex items-center justify-between">
+      <section className="flex md:flex-row flex-col gap-y-4 items-center justify-between">
         <Heading 
           title="Configuración"
           description="Administrar preferiencias de la tienda"
@@ -116,7 +116,7 @@ const SettingsForm: React.FC<SettingsFormProps> = ({
               control={form.control}
               name='name'
               render={({ field }) => (
-                <FormItem>
+                <FormItem className='w-60 md:w-auto'>
                   <FormLabel>Nombre</FormLabel>
                   <FormControl>
                     <Input 
