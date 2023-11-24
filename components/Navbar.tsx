@@ -23,9 +23,12 @@ const Navbar = async () => {
     <section className="border-b">
       <nav className="flex h-16 items-center gap-x-4 px-4 lg:px-8 w-full justify-between">
         <StoreSwitcher items={stores} className="order-first" />
-        <MainNav />
 
-        <article className="lg:ml-auto flex items-center space-x-4 oder-2">
+        <div className="order-last lg:order-2">
+          <MainNav />
+        </div>
+
+        <article className="lg:ml-auto flex items-center space-x-4 oder-2 lg:order-last">
           <ThemeToggle />
           <UserButton afterSignOutUrl="/" />
         </article>
