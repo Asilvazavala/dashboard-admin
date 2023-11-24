@@ -21,7 +21,7 @@ const Navbar = async () => {
 
   return (
     <section className="border-b">
-      <nav className="flex h-16 items-center gap-x-4 px-8 w-full justify-between">
+      <nav className="flex h-16 items-center gap-x-4 px-4 lg:px-8 w-full justify-between">
         <StoreSwitcher items={stores} className="order-first" />
         <MainNav />
 

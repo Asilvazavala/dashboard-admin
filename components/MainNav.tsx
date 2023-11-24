@@ -60,9 +60,9 @@ export function MainNav() {
       </article>
 
       <nav
-        className={`items-center space-x-4 mx-4 lg:mx-6 order-last lg:space-x-6 lg:flex lg:flex-row
+        className={`items-center space-x-4 lg:mx-6 order-last lg:space-x-6 lg:flex lg:flex-row
         ${openNavbarMobile 
-          ? 'flex flex-col dark:bg-blueDark bg-gray-100 gap-y-8 z-50 h-screen w-full absolute left-0 top-16' 
+          ? 'flex flex-col dark:bg-blueDark bg-gray-100 gap-y-8 z-50 h-full w-full absolute left-0 top-16' 
           : 'hidden'} `}  
       >
         {routes.map((route) => (

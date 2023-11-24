@@ -37,7 +37,7 @@ const ProductsPage = async ({
 
   return (
     <section className="flex-col">
-      <article className="flex-1 space-y-4 p-8 pt-6">
+      <article className="flex-1 space-y-4 p-4 md:p-8 pt-6">
         <ProductClient data={formattedProducts} />
       </article>
     </section>

@@ -24,7 +24,7 @@ const DahsboardPage: React.FC<DashboardPageProps> = async ({
 
   return (
     <section className='flex-col'>
-      <header className='flex-1 space-y-4 p-8 pt-6'>
+      <header className='flex-1 space-y-4 p-4 md:p-8 pt-6'>
         <Heading 
           title='Panel de administrador' 
           description='Descripción general de tu tienda'
