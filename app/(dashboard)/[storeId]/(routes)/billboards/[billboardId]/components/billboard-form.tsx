@@ -145,7 +145,7 @@ const BillboardForm: React.FC<BillboardFormProps> = ({
           )}
         />
 
-          <main className='grid grid-cols-3 gap-8'>
+          <main className='grid grid-cols-1 md:grid-cols-3 gap-8'>
             <FormField 
               control={form.control}
               name='label'
@@ -166,7 +166,7 @@ const BillboardForm: React.FC<BillboardFormProps> = ({
           </main>
           <Button 
             disabled={loading} 
-            className='ml-auto' 
+            className='ml-auto w-full md:w-auto' 
             type='submit'
           >
             {action}

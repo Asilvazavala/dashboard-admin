@@ -12,6 +12,7 @@ export async function POST(
 
     const { 
       name, 
+      description,
       price,
       categoryId,
       sizeId,
@@ -26,6 +27,10 @@ export async function POST(
 
     if (!name) {
       return new NextResponse("Name is required", { status: 400 });
+    }
+
+    if (!description) {
+      return new NextResponse("Description is required", { status: 400 });
     }
 
     if (!images || !images.length) {
@@ -62,6 +67,7 @@ export async function POST(
     const product = await prismadb.product.create({
       data: {
         name,
+        description,
         price,
         isFeatured,
         isArchived,
@@ -103,9 +109,9 @@ export async function GET(
     const products = await prismadb.product.findMany({
       where: {
         storeId: params.storeId,
-        categoryId,
-        sizeId,
-        isFeatured: isFeatured ? true : undefined,
+        // categoryId,
+        // sizeId,
+        // isFeatured: isFeatured ? true : undefined,
         isArchived: false
       },
       include: {

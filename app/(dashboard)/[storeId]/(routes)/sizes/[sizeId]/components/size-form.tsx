@@ -126,7 +126,7 @@ const SizeForm: React.FC<SizeFormProps> = ({
           onSubmit={form.handleSubmit(onSubmit)}
           className='space-y-8 w-full'  
         >
-          <main className='grid grid-cols-3 gap-8'>
+          <main className='grid grid-cols-1 md:grid-cols-3 gap-8'>
             <FormField 
               control={form.control}
               name='name'
@@ -164,7 +164,7 @@ const SizeForm: React.FC<SizeFormProps> = ({
           </main>
           <Button 
             disabled={loading} 
-            className='ml-auto' 
+            className='ml-auto w-full md:w-auto' 
             type='submit'
           >
             {action}

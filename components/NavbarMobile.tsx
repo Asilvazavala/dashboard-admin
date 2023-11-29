@@ -1,3 +1,5 @@
+"use client";
+
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
 import { Routes } from "./MainNav";
@@ -9,8 +11,6 @@ interface NavbarMobileProps {
 export const NavbarMobile: React.FC<NavbarMobileProps> = ({
   routes
 }) => {  
-  const location = window.location.pathname;
-
   useEffect(() => {
     const body = document.body;
     const handleMenuToggle = () => {
@@ -28,7 +28,6 @@ export const NavbarMobile: React.FC<NavbarMobileProps> = ({
     };
   }, []);
   
-
   return (
     <nav className="lg:hidden ml-8 h-screen">
       <label htmlFor="menuMobile">
@@ -44,7 +43,7 @@ export const NavbarMobile: React.FC<NavbarMobileProps> = ({
           {routes.map(item => (
             <li key={item.label} className="flex justify-between w-full text-3xl py-2
             border-gray-300 border-b px-8">
-              <a href={item.href} className={`${location === item.href ? 'font-bold' : ''}
+              <a href={item.href} className={`
                 w-full dark:text-white text-black flex justify-between items-center`}
               >
                 {item.label}

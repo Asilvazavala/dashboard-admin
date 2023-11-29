@@ -38,6 +38,7 @@ const formSchema = z.object({
   name: z.string().min(1),
   images: z.object({ url: z.string() }).array(),
   price: z.coerce.number().min(1),
+  description: z.string().min(1),
   categoryId: z.string().min(1),
   sizeId: z.string().min(1),
   isFeatured: z.boolean().default(false).optional(),
@@ -66,7 +67,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
   const [loading, setLoading] = useState(false);
 
   const title = initialData ? "Editar producto" : "Crear producto";
-  const description = initialData ? "Editar un producto" : "Crear un producto";
+  const desc = initialData ? "Editar un producto" : "Crear un producto";
   const toastMessage = initialData ? "Producto actualizado" : "Producto creado";
   const action = initialData ? "Guardar cambios" : "Crear producto";
 
@@ -79,6 +80,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
       name: '',
       images: [],
       price: 0,
+      description: '',
       categoryId: '',
       sizeId: '',
       isFeatured: false,
@@ -135,7 +137,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
       <section className="flex items-center justify-between">
         <Heading 
           title={title}
-          description={description}
+          description={desc}
         />
         {initialData && (
           <Button
@@ -173,7 +175,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
           )}
         />
 
-          <main className='grid grid-cols-3 gap-8'>
+          <main className='grid grid-cols-1 md:grid-cols-3 gap-8'>
             <FormField 
               control={form.control}
               name='name'
@@ -184,6 +186,24 @@ const ProductForm: React.FC<ProductFormProps> = ({
                     <Input 
                       disabled={loading} 
                       placeholder='Nombre del producto'
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField 
+              control={form.control}
+              name='description'
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Descripción del producto</FormLabel>
+                  <FormControl>
+                    <Input 
+                      disabled={loading} 
+                      placeholder='Descripción del producto'
                       {...field}
                     />
                   </FormControl>
@@ -332,7 +352,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
           </main>
           <Button 
             disabled={loading} 
-            className='ml-auto' 
+            className='ml-auto w-full md:w-auto' 
             type='submit'
           >
             {action}
