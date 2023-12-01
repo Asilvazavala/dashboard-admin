@@ -36,7 +36,7 @@ export async function POST(
 
   products.forEach((product) => {
     line_items.push({
-      quantity: 1,
+      quantity: Number(product.cantidad),
       price_data: {
         currency: 'USD',
         product_data: {
