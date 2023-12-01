@@ -92,6 +92,7 @@ model Product {
   isArchived  Boolean @default(false)
   sizeId      String
   size        Size @relation(fields: [sizeId], references: [id])
+  cantidad    Decimal
   // colorId     String
   // color       Color @relation(fields: [colorId], references: [id])
   images      Image[]

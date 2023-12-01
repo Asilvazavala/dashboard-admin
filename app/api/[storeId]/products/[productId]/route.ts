@@ -42,6 +42,7 @@ export async function PATCH (
       name, 
       description,
       price,
+      cantidad,
       categoryId,
       sizeId,
       images,
@@ -67,6 +68,10 @@ export async function PATCH (
 
     if (!price) {
       return new NextResponse("Price is required", { status: 400 });
+    }
+
+    if (!cantidad) {
+      return new NextResponse("Cantidad is required", { status: 400 });
     }
 
     if (!categoryId) {
@@ -100,6 +105,7 @@ export async function PATCH (
         name,
         description,
         price,
+        cantidad,
         categoryId,
         sizeId,
         images: {
